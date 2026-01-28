@@ -1,0 +1,46 @@
+package javacore;
+
+public class Productobj {
+	int id;
+	String name;
+	int price;
+	int quantity;
+	
+public Productobj(int id,String name, int price,int quantity){
+	
+	this.id=id;
+	this.name=name;
+	this.price=price;
+	this.quantity=quantity;
+ }
+
+public int getId() {
+	return id;
+}
+
+
+
+public String getName() {
+	return name;
+}
+
+
+public int getPrice() {
+	return price;
+}
+
+
+
+public int getQuantity() {
+	return quantity;
+}
+
+public  String toString() {
+	return "Productobj[id=" +id+",name="+name+",quantity="+quantity+",price="+price+"]"; 
+	
+}
+public String toFileFormat() {
+	return id+","+name+","+quantity+","+price;
+}
+
+}
