@@ -1,0 +1,43 @@
+package com.HireADriver.servlet;
+
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+
+@WebServlet("/testserverlet")
+public class testserverlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public testserverlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println("this is a doget of test server");
+		String name=request.getParameter("n");
+		//String op=request.getParameter("op");
+		
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		System.out.println("name is"+name);
+		
+	out.println("<h1>name is "+name+"</h1>");
+	}
+
+	
+
+}
