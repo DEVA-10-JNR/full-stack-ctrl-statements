@@ -1,0 +1,44 @@
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Cookie ck[]=request.getCookies();
+		String userName=null;
+		if(ck !=null) {
+			for(Cookie c : ck) {
+				if("uname".equals(c.getname())) {
+					userName=c.getvalue();
+				}
+			}
+		}
+		
+		User user = new User(userName,"Client","","");
+		requet.setAtrribute("loggeduser",user);
+		
+		RequestDispatcher rd=request.getRequestDispatcher("UserHomeServlet");
+		rd.forward(request, response);
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		String uname=request.getParameter("user_name");
+		String password = request.getParameter("password");
+		
+		Cookie ck = new Cookie("uname",uname);
+		response.addCookie(ck);
+		
+		if(uname!=null && password!=null && !uname.isEmpty()&&!password.isEmpty()&&uname.equals("admin")&&password.equals("admin")) {
+			System.out.println("Login Successsful");
+			RequestDispatcher rd= request.getRequestDispatcher("Admindashboardservlet");
+			User adminuser = new User("Admin","Administrator","8247206047","admin@gmail.com");
+			request.setAttribute("loggedinUser",adminuser);
+			
+			rd.forward(request, response);
+		}
+		
+	
+	}
